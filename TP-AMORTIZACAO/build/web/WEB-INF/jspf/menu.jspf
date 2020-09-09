@@ -33,7 +33,7 @@
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href="tabela-preco.jsp">Tabela preço</a>
+          <a class="nav-link" href="tabela-price.jsp">Tabela Price</a>
         </li> 
       </ul>
     </div>
