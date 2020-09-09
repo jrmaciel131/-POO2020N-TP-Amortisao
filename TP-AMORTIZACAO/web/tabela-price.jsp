@@ -9,9 +9,9 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Tabela Preço</title>
+    <title>Tabela Price</title>
   </head>
   <body>
-    <h1>tabela preço</h1>
+    <h1>tabela price</h1>
   </body>
 </html>
