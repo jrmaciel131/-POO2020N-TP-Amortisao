@@ -3,18 +3,25 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    Double saldodevedor, taxa;
+    Double saldodevedor, taxa, resultsaldo, resultj, resulta;
     int nparcelas;
     Exception requestException = null;
     try {
         nparcelas = Integer.parseInt(request.getParameter("nparcelas"));
         taxa = Double.parseDouble(request.getParameter("taxa"));
         saldodevedor = Double.parseDouble(request.getParameter("valorEmprestimo"));
+        resultsaldo = 0.0;
+        resultj = 0.0;
+        resulta = 0.0;
+        
     } catch (Exception ex) {
         nparcelas = 0;
         taxa = 0.0;
         saldodevedor = 0.0;
         requestException = ex;
+        resultsaldo = 0.0;
+        resultj = 0.0;
+        resulta = 0.0;
     }
 %>
 <html>
@@ -82,7 +89,7 @@
                         Double a = (saldodevedor / nparcelas);
                         Double j = (saldodevedor * taxa) / 100;
                         DecimalFormat df = new DecimalFormat("#0.00");
-                df.format(taxa); %>
+                        df.format(taxa); %>
 
                     <% for (int i = 1; i <= nparcelas; i++) {%>
                     <tr>
@@ -90,17 +97,34 @@
                         <% if (i == 1) {%>
                         <td><%= saldodevedor%></td>
                         <td><%= df.format(j)%></td>
-                        <% } else {%>
+                        <%
+                            resultsaldo = +saldodevedor;
+                            resultj = +j;
+                        } else {
+                        %>
                         <% j = (saldo * taxa) / 100;%>
                         <td><%= df.format(saldo)%></td>
                         <td><%= df.format(j)%></td>
-                        <% }%>
+                        <%
+                            resultsaldo =+ saldodevedor;
+                            resultj += j;
+                            }
+                        %>
                         <td><%= df.format(a)%></td>
+                        <% resulta += a; %>
                         <th><%= df.format(a + j)%></th>
-                            <% saldo = saldo - a; %>
+                        <%saldo = saldo - a;%>
+                        
 
                     </tr>
                     <% }%>
+                    <tr>
+                        <td>#</td>
+                        <td><%= df.format(resultsaldo)%></td>
+                        <td><%= df.format(resultj)%></td>
+                        <td><%= df.format(resulta)%></td>
+                        <th> Totais</th>
+                    </tr>
                     </tbody>
             </table>
         </div>
