@@ -30,10 +30,12 @@
       <div class="jumbotron mt-5">
         <div class="container">
           <h1 class="display-4 font-weight-bold">Cálculo de amortização</h1>
-          <p class="text-muted mt-3" style="font-size: 1.2rem; line-height: 35px;">Desenvolvido por 
-            <a href="https://github.com/luansilvae" target="__blank">Luan Silva</a>, 
-            <a href="https://github.com/jrmaciel131/" target="__blank">César Maciel</a> e
-            <a href="#">Guilherme Teodoro</a>. A aplicação realiza os calculos de amortização constante, americana e tabela price.</p>
+          <p class="text-muted mt-3" style="font-size: 1.2rem; line-height: 35px;">Desenvolvido por
+            <a href="https://github.com/jrmaciel131/" target="__blank">César Maciel</a>,
+            <a href="https://github.com/guigran" target="__blank">Guilherme Teodoro</a>,
+            <a href="https://github.com/LauroLds" target="__blank">Lauro Luiz</a> e
+            <a href="https://github.com/luansilvae" target="__blank">Luan Silva</a>. 
+            A aplicação realiza os calculos de amortização constante, americana e tabela price.</p>
         </div>
       </div>
 
