@@ -3,8 +3,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    Double saldodevedor, taxa, P, a, resultsaldo, resultJ, resultA, resultP;
-    int nparcelas;
+    double saldodevedor, taxa, P, a, resultJ, resultA, resultP;
+    double nparcelas;
     Exception requestException = null;
     try {
         nparcelas = Integer.parseInt(request.getParameter("nparcelas"));
@@ -22,6 +22,7 @@
         requestException = ex;
         resultJ = 0.0;
         resultA = 0.0;
+        a = 0.0;
         resultP = 0.0;
     }
 %>
@@ -58,7 +59,7 @@
             </div>
         </div>
         <div class="container">
-            <table class="table " >
+            <table class="table border " >
                 <thead class="thead-dark">
                     <tr>
                         <th>Mês</th>
@@ -118,8 +119,8 @@
                         <%saldo = saldo - a;%>
                     </tr>
                     <% }%>
-                    <tr>
-                        <th>TOTAIS</th>
+                    <tr class="bg-dark text-white">
+                        <td class="font-weight-bold">TOTAIS</td>
                         <td>0 </td>
                         <td><%= df.format(resultJ)%></td>
                         <td><%= df.format(resultA)%></td>
