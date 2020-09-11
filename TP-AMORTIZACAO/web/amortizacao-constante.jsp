@@ -3,25 +3,26 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    Double saldodevedor, taxa, resultsaldo, resultj, resulta;
+    Double saldodevedor, taxa, P, a, resultsaldo, resultJ, resultA, resultP;
     int nparcelas;
     Exception requestException = null;
     try {
         nparcelas = Integer.parseInt(request.getParameter("nparcelas"));
         taxa = Double.parseDouble(request.getParameter("taxa"));
         saldodevedor = Double.parseDouble(request.getParameter("valorEmprestimo"));
-        resultsaldo = 0.0;
-        resultj = 0.0;
-        resulta = 0.0;
-        
+        resultJ = 0.0;
+        resultA = 0.0;
+        resultP = 0.0;
+        a = 0.0;
+
     } catch (Exception ex) {
         nparcelas = 0;
         taxa = 0.0;
         saldodevedor = 0.0;
         requestException = ex;
-        resultsaldo = 0.0;
-        resultj = 0.0;
-        resulta = 0.0;
+        resultJ = 0.0;
+        resultA = 0.0;
+        resultP = 0.0;
     }
 %>
 <html>
@@ -67,26 +68,27 @@
                         <th>Parcela</th>
                     </tr>
                     <% if (request.getParameter("nparcelas") == null) {%>
-                    <tr><td colspan="2">Sem parametro</td></tr>
+                    <tr><td colspan="5">Sem parametro</td></tr>
                     <% } else if (requestException != null) {%>
-                    <tr><td colspan="2">Parametro invalido</td></tr>
+                    <tr><td colspan="5">Parametro invalido</td></tr>
                     <% } %>
                     <% if (request.getParameter("taxa") == null) {%>
-                    <tr><td colspan="2">Sem parametro</td></tr>
+                    <tr><td colspan="5">Sem parametro</td></tr>
                     <% } else if (requestException != null) {%>
-                    <tr><td colspan="2">Parametro invalido</td></tr>
+                    <tr><td colspan="5">Parametro invalido</td></tr>
                     <% } %>
 
                     <% if (request.getParameter("valorEmprestimo") == null) {%>
-                    <tr><td colspan="2">Sem parametro</td></tr>
+                    <tr><td colspan="5">Sem parametro</td></tr>
                     <% } else if (requestException != null) {%>
-                    <tr><td colspan="2">Parametro invalido</td></tr>
+                    <tr><td colspan="5">Parametro invalido</td></tr>
                     <% } %>
 
 
                     <% Double saldo = saldodevedor;
                         taxa = (taxa / 12);
-                        Double a = (saldodevedor / nparcelas);
+                        a = (saldodevedor / nparcelas);
+                        resultA = a * nparcelas;
                         Double j = (saldodevedor * taxa) / 100;
                         DecimalFormat df = new DecimalFormat("#0.00");
                         df.format(taxa); %>
@@ -98,37 +100,35 @@
                         <td><%= saldodevedor%></td>
                         <td><%= df.format(j)%></td>
                         <%
-                            resultsaldo = +saldodevedor;
-                            resultj = +j;
                         } else {
                         %>
                         <% j = (saldo * taxa) / 100;%>
                         <td><%= df.format(saldo)%></td>
                         <td><%= df.format(j)%></td>
                         <%
-                            resultsaldo =+ saldodevedor;
-                            resultj += j;
+                                resultJ += j;
                             }
                         %>
                         <td><%= df.format(a)%></td>
-                        <% resulta += a; %>
-                        <th><%= df.format(a + j)%></th>
+                        <%
+                            P = a + j;
+                            resultP += P;
+                        %>
+                        <td><%= df.format(P)%></td>
                         <%saldo = saldo - a;%>
-                        
-
                     </tr>
                     <% }%>
                     <tr>
-                        <td>#</td>
-                        <td><%= df.format(resultsaldo)%></td>
-                        <td><%= df.format(resultj)%></td>
-                        <td><%= df.format(resulta)%></td>
-                        <th> Totais</th>
+                        <th>TOTAIS</th>
+                        <td>0 </td>
+                        <td><%= df.format(resultJ)%></td>
+                        <td><%= df.format(resultA)%></td>
+                        <td><%= df.format(resultP)%></td>
+
                     </tr>
                     </tbody>
             </table>
         </div>
-
         <%@include file="WEB-INF/jspf/scripts.jspf" %>
     </body>
 </html>
