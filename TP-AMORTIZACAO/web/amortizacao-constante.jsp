@@ -3,27 +3,26 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    double saldodevedor, taxa, P, a, resultJ, resultA, resultP;
-    double nparcelas;
+    float saldodevedor, taxa, P, a, resultJ, resultA, resultP, nparcelas;
     Exception requestException = null;
     try {
-        nparcelas = Integer.parseInt(request.getParameter("nparcelas"));
-        taxa = Double.parseDouble(request.getParameter("taxa"));
-        saldodevedor = Double.parseDouble(request.getParameter("valorEmprestimo"));
-        resultJ = 0.0;
-        resultA = 0.0;
-        resultP = 0.0;
-        a = 0.0;
+        nparcelas = Float.parseFloat(request.getParameter("nparcelas"));
+        taxa = Float.parseFloat(request.getParameter("taxa"));
+        saldodevedor = Float.parseFloat(request.getParameter("valorEmprestimo"));
+        resultJ = 0;
+        resultA = 0;
+        resultP = 0;
+        a = 0;
 
     } catch (Exception ex) {
         nparcelas = 0;
-        taxa = 0.0;
-        saldodevedor = 0.0;
+        taxa = 0;
+        saldodevedor = 0;
         requestException = ex;
-        resultJ = 0.0;
-        resultA = 0.0;
-        a = 0.0;
-        resultP = 0.0;
+        resultJ = 0;
+        resultA = 0;
+        a = 0;
+        resultP = 0;
     }
 %>
 <html>
@@ -86,11 +85,11 @@
                     <% } %>
 
 
-                    <% Double saldo = saldodevedor;
+                    <% float saldo = saldodevedor;
                         taxa = (taxa / 12);
                         a = (saldodevedor / nparcelas);
                         resultA = a * nparcelas;
-                        Double j = (saldodevedor * taxa) / 100;
+                        float j = (saldodevedor * taxa) / 100;
                         DecimalFormat df = new DecimalFormat("#0.00");
                         df.format(taxa); %>
 
