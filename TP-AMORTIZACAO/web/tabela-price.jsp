@@ -3,27 +3,27 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    Double saldodevedor, taxa, resultsaldo, resultj, resulta, parcelafixa;
+    Double saldodevedor, taxa, resultj, resultp, resulta, parcelafixa;
     int nparcelas;
     Exception requestException = null;
     try {
         nparcelas = Integer.parseInt(request.getParameter("nparcelas"));
         taxa = Double.parseDouble(request.getParameter("taxa"));
         saldodevedor = Double.parseDouble(request.getParameter("valorEmprestimo"));
-        resultsaldo = 0.0;
         resultj = 0.0;
         resulta = 0.0;
         parcelafixa = 0.0;
+        resultp = 0.0;
 
     } catch (Exception ex) {
         nparcelas = 0;
         taxa = 0.0;
         saldodevedor = 0.0;
         requestException = ex;
-        resultsaldo = 0.0;
         resultj = 0.0;
         resulta = 0.0;
         parcelafixa = 0.0;
+        resultp = 0.0;
     }
 %>
 <html>
@@ -61,7 +61,7 @@
             </div>
         </div>
         <div class="container">
-            <table class="table " >
+            <table class="table border" >
                 <thead class="thead-dark">
                     <tr>
                         <th>Mês</th>
@@ -71,20 +71,20 @@
                         <th>Parcela</th>
                     </tr>
                     <% if (request.getParameter("nparcelas") == null) {%>
-                    <tr><td colspan="2">Sem parametro</td></tr>
+                    <tr><td colspan="5">Sem parametro</td></tr>
                     <% } else if (requestException != null) {%>
-                    <tr><td colspan="2">Parametro invalido</td></tr>
+                    <tr><td colspan="5">Parametro invalido</td></tr>
                     <% } %>
                     <% if (request.getParameter("taxa") == null) {%>
-                    <tr><td colspan="2">Sem parametro</td></tr>
+                    <tr><td colspan="5">Sem parametro</td></tr>
                     <% } else if (requestException != null) {%>
-                    <tr><td colspan="2">Parametro invalido</td></tr>
+                    <tr><td colspan="5">Parametro invalido</td></tr>
                     <% } %>
 
                     <% if (request.getParameter("valorEmprestimo") == null) {%>
-                    <tr><td colspan="2">Sem parametro</td></tr>
+                    <tr><td colspan="5">Sem parametro</td></tr>
                     <% } else if (requestException != null) {%>
-                    <tr><td colspan="2">Parametro invalido</td></tr>
+                    <tr><td colspan="5">Parametro invalido</td></tr>
                     <% } %>
 
 
@@ -104,7 +104,6 @@
                         <td><%= saldodevedor%></td>
                         <td><%= df.format(j)%></td>
                         <%
-                            resultsaldo = +saldodevedor;
                             resultj = +j;
                         } else {
                         %>
@@ -112,24 +111,26 @@
                         <td><%= df.format(saldo)%></td>
                         <td><%= df.format(j)%></td>
                         <%
-                                resultsaldo = +saldodevedor;
                                 resultj += j;
                             }
                         %>
                         <td><%= df.format(a)%></td>
-                        <% resulta += a;%>
-                        <th><%= df.format(parcelafixa)%></th>
+                        <% 
+                          resulta += a;
+                          resultp += parcelafixa;
+                        %>
+                        <td><%= df.format(parcelafixa)%></td>
                             <%saldo = saldo - parcelafixa;%>
 
 
                     </tr>
                     <% }%>
-                    <tr>
-                        <td>#</td>
-                        <td><%= df.format(resultsaldo)%></td>
+                    <tr class="bg-dark text-white">
+                      <td class="font-weight-bold">Totais</td>
+                        <td>0</td>
                         <td><%= df.format(resultj)%></td>
                         <td><%= df.format(resulta)%></td>
-                        <th> Totais</th>
+                        <td><%= df.format(resultp)%></td>
                     </tr>
                     </tbody>
             </table>
