@@ -1,0 +1,30 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+
+  <footer class="bg-dark text-white pt-5 pb-5 border-top mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md">
+          <a href="index.jsp" class="text-white font-weight-bold" style="font-size: 1.5rem;">Cálculo Amortização</a>
+          <small class="d-block mb-3 text-muted">ADS - Fatec PG</small>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Cálculos</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="amortizacao-constante.jsp">Amortização Constante</a></li>
+            <li><a class="text-muted" href="amortizacao-americana.jsp">Amortização Americana</a></li>
+            <li><a class="text-muted" href="tabela-price.jsp">Tabela Price</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Desenvolvedores</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" target="__blank" href="https://github.com/jrmaciel131/">César Maciel</a></li>
+            <li><a class="text-muted" target="__blank" href="https://github.com/guigran">Guilherme Teodoro</a></li>
+            <li><a class="text-muted" target="__blank" href="https://github.com/LauroLDS01">Lauro Luiz</a></li>
+            <li><a class="text-muted" target="__blank" href="https://github.com/luansilvae">Luan Silva</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
