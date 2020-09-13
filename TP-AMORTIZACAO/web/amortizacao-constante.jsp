@@ -56,7 +56,7 @@
 
             <div class="input-group-lg mb-3">
               <label  for="juros">Taxa de juros ao ano</label>
-              <input type="number" name="taxa" class="form-control" id="juros">
+              <input type="text" name="taxa" class="form-control" id="juros">
             </div>
 
             <div class="input-group-lg mb-3">
@@ -141,6 +141,7 @@
         </table>
       </div>
     </main>
+    <%@include file="WEB-INF/jspf/footer.jspf" %>
     <%@include file="WEB-INF/jspf/scripts.jspf" %>
   </body>
 </html>

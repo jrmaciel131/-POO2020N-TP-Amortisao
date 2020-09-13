@@ -33,7 +33,7 @@
           <p class="text-muted mt-3" style="font-size: 1.2rem; line-height: 35px;">Desenvolvido por
             <a href="https://github.com/jrmaciel131/" target="__blank">César Maciel</a>,
             <a href="https://github.com/guigran" target="__blank">Guilherme Teodoro</a>,
-            <a href="https://github.com/LauroLds" target="__blank">Lauro Luiz</a> e
+            <a href="https://github.com/LauroLDS01" target="__blank">Lauro Luiz</a> e
             <a href="https://github.com/luansilvae" target="__blank">Luan Silva</a>. 
             A aplicação realiza os calculos de amortização constante, americana e tabela price.</p>
         </div>
@@ -68,7 +68,7 @@
         </div>
       </div>
     </main>
-    
+    <%@include file="WEB-INF/jspf/footer.jspf" %>
     <%@include file="WEB-INF/jspf/scripts.jspf" %>
   </body>
 </html>
