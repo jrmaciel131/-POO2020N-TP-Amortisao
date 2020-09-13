@@ -3,27 +3,27 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-  Double saldodevedor, taxa, resultj, resultp, resulta, parcelafixa;
+  float saldodevedor, taxa, resultj, resultp, resulta, parcelafixa;
   int nparcelas;
   Exception requestException = null;
   try {
     nparcelas = Integer.parseInt(request.getParameter("nparcelas"));
-    taxa = Double.parseDouble(request.getParameter("taxa"));
-    saldodevedor = Double.parseDouble(request.getParameter("valorEmprestimo"));
-    resultj = 0.0;
-    resulta = 0.0;
-    parcelafixa = 0.0;
-    resultp = 0.0;
+    taxa = Float.parseFloat(request.getParameter("taxa"));
+    saldodevedor = Float.parseFloat(request.getParameter("valorEmprestimo"));
+    resultj = 0;
+    resulta = 0;
+    parcelafixa = 0;
+    resultp = 0;
 
   } catch (Exception ex) {
     nparcelas = 0;
-    taxa = 0.0;
-    saldodevedor = 0.0;
+    taxa = 0;
+    saldodevedor = 0;
     requestException = ex;
-    resultj = 0.0;
-    resulta = 0.0;
-    parcelafixa = 0.0;
-    resultp = 0.0;
+    resultj = 0;
+    resulta = 0;
+    parcelafixa = 0;
+    resultp = 0;
   }
 %>
 <html>
@@ -98,15 +98,15 @@
             <% } %>
 
 
-            <% Double saldo = saldodevedor;
-              taxa = (taxa / 12);
-              parcelafixa = saldodevedor * (Math.pow(1 + (taxa / 100), nparcelas) * (taxa / 100)) / (Math.pow(1 + (taxa / 100), nparcelas) - 1);
-              Double j = (saldodevedor * taxa) / 100;
+            <% float saldo = saldodevedor;
+              taxa = (taxa / 12)/100;
+              parcelafixa = (float) (saldodevedor * (Math.pow(1 + (taxa), nparcelas) * taxa) / (Math.pow(1 + (taxa), nparcelas) - 1));
+              float j = (saldodevedor * taxa);
               DecimalFormat df = new DecimalFormat("#0.00");
               df.format(taxa); %>
 
             <% for (int i = 1; i <= nparcelas; i++) {
-                Double a = (parcelafixa - j);
+                float a = (parcelafixa - j);
             %>
             <tr>
               <td><%= i%></td>
@@ -117,7 +117,7 @@
                 resultj = +j;
               } else {
               %>
-              <% j = (saldo * taxa) / 100;%>
+              <% j = (saldo * taxa);%>
               <td><%= df.format(saldo)%></td>
               <td><%= df.format(j)%></td>
               <%
@@ -130,7 +130,7 @@
                 resultp += parcelafixa;
               %>
               <td><%= df.format(parcelafixa)%></td>
-              <%saldo = saldo - parcelafixa;%>
+              <%saldo = saldo - a;%>
 
 
             </tr>
