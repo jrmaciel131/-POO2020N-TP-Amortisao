@@ -3,27 +3,19 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-  float saldodevedor, taxa, resultj, resultp, resulta, parcelafixa;
-  int nparcelas;
-  Exception requestException = null;
+  DecimalFormat df = new DecimalFormat("#0.00");
+  float saldodevedor, taxa;
+  int parcelas;
   try {
-    nparcelas = Integer.parseInt(request.getParameter("nparcelas"));
+    parcelas = Integer.parseInt(request.getParameter("nparcelas"));
     taxa = Float.parseFloat(request.getParameter("taxa"));
     saldodevedor = Float.parseFloat(request.getParameter("valorEmprestimo"));
-    resultj = 0;
-    resulta = 0;
-    parcelafixa = 0;
-    resultp = 0;
-
   } catch (Exception ex) {
-    nparcelas = 0;
+    out.println(ex);
+    parcelas = 0;
     taxa = 0;
     saldodevedor = 0;
-    requestException = ex;
-    resultj = 0;
-    resulta = 0;
-    parcelafixa = 0;
-    resultp = 0;
+
   }
 %>
 <html>
@@ -71,78 +63,72 @@
         </div>
       </div>
       <div class="container">
-        <table class="table mt-5 mb-5 border">
+
+        <%
+          float taxaConvertida = (taxa / 12) / 100;
+
+          float amortizacao = 0;
+          float juros = 0;
+          float parcelafixa = (float) (saldodevedor * (Math.pow(1 + taxaConvertida, parcelas) * taxaConvertida) / (Math.pow(1 + (taxaConvertida), parcelas) - 1));
+
+          float totalSaldoDevedor = 0;
+          float totalJuros = 0;
+          float totalAmortizacao = 0;
+          float totalParcelas = 0;
+
+         
+
+        %>
+        <table class="table border">
           <thead class="thead-dark">
             <tr>
-              <th>Mês</th>
-              <th>Saldo devedor</th>
-              <th>Juros</th>
-              <th>Amortizacao</th>
-              <th>Parcela</th>
+              <th scope="col">Mês</th>
+              <th scope="col">Saldo devedor</th>
+              <th scope="col">Juros</th>
+              <th scope="col">Amortização</th>
+              <th scope="col">Parcela</th>
             </tr>
-            <% if (request.getParameter("nparcelas") == null) {%>
-            <tr><td colspan="5">Sem parametro</td></tr>
-            <% } else if (requestException != null) {%>
-            <tr><td colspan="5">Parametro invalido</td></tr>
-            <% } %>
-            <% if (request.getParameter("taxa") == null) {%>
-            <tr><td colspan="5">Sem parametro</td></tr>
-            <% } else if (requestException != null) {%>
-            <tr><td colspan="5">Parametro invalido</td></tr>
-            <% } %>
 
-            <% if (request.getParameter("valorEmprestimo") == null) {%>
-            <tr><td colspan="5">Sem parametro</td></tr>
-            <% } else if (requestException != null) {%>
-            <tr><td colspan="5">Parametro invalido</td></tr>
-            <% } %>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="col">#</th>
+              <td ><%= saldodevedor%></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <%
+              for (int i = 1; i <= parcelas; i++) {
+                totalSaldoDevedor += saldodevedor;
 
+                juros = saldodevedor * taxaConvertida;
+                amortizacao = parcelafixa - juros;
+                saldodevedor -= amortizacao;
 
-            <% float saldo = saldodevedor;
-              taxa = (taxa / 12)/100;
-              parcelafixa = (float) (saldodevedor * (Math.pow(1 + (taxa), nparcelas) * taxa) / (Math.pow(1 + (taxa), nparcelas) - 1));
-              float j = (saldodevedor * taxa);
-              DecimalFormat df = new DecimalFormat("#0.00");
-              df.format(taxa); %>
+                totalJuros += juros;
+                totalAmortizacao += amortizacao;
+                totalParcelas += parcelafixa;
 
-            <% for (int i = 1; i <= nparcelas; i++) {
-                float a = (parcelafixa - j);
+                float saldoArredondado = Math.round(saldodevedor);
             %>
             <tr>
-              <td><%= i%></td>
-              <% if (i == 1) {%>
-              <td><%= saldodevedor%></td>
-              <td><%= df.format(j)%></td>
-              <%
-                resultj = +j;
-              } else {
-              %>
-              <% j = (saldo * taxa);%>
-              <td><%= df.format(saldo)%></td>
-              <td><%= df.format(j)%></td>
-              <%
-                  resultj += j;
-                }
-              %>
-              <td><%= df.format(a)%></td>
-              <%
-                resulta += a;
-                resultp += parcelafixa;
-              %>
+              <th scope="row"><%= i%></th>
+              <td><%= (i == parcelas ? saldoArredondado : df.format(saldodevedor))%></td>
+              <td><%= df.format(juros)%></td>
+              <td><%= df.format(amortizacao)%></td>
               <td><%= df.format(parcelafixa)%></td>
-              <%saldo = saldo - a;%>
-
-
             </tr>
-            <% }%>
+            <%}%>
+
             <tr class="bg-dark text-white">
-              <td class="font-weight-bold">Totais</td>
-              <td>0</td>
-              <td><%= df.format(resultj)%></td>
-              <td><%= df.format(resulta)%></td>
-              <td><%= df.format(resultp)%></td>
+              <th scope="row">TOTAIS</th>
+              <td></td>
+              <td><%= df.format(totalJuros)%></td>
+              <td><%= df.format(Math.round(totalAmortizacao))%></td>
+              <td><%= df.format(totalParcelas)%></td>
             </tr>
-            </tbody>
+          </tbody>
         </table>
       </div>
     </main>
@@ -150,3 +136,4 @@
     <%@include file="WEB-INF/jspf/scripts.jspf" %>
   </body>
 </html>
+
