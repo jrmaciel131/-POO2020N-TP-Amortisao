@@ -39,7 +39,7 @@
         </div>
       </div>
 
-      <div class="container">
+      <div class="container mt-5">
         <div class="row">
           <div class="col-md-4 text-center content">
             <h3 class="mb-0">Amortização Constante</h3>
@@ -47,7 +47,7 @@
               de um empréstimo por prestações que incluem os juros, amortizando assim 
               partes iguais do valor total do empréstimo.
             </p>
-            <p class="mb-0"><a class="btn btn-primary mb-5" href="amortizacao-constante.jsp" role="button">Calcular &raquo;</a></p>
+            <p class="mb-0"><a class="btn btn-lg btn-primary mb-5" href="amortizacao-constante.jsp" role="button">Calcular &raquo;</a></p>
           </div>
           
           <div class="col-md-4 text-center content">
@@ -55,7 +55,7 @@
             <p class="mb-0">É um sistema de amortização de dívidas onde os juros de um empréstimo são pagos periodicamente, 
               porém a quitação do empréstimo se dá por meio de uma única parcela que deverá ser paga ao final do contrato.
             </p>
-            <p class="mb-0"><a class="btn btn-primary mb-5" href="amortizacao-americana.jsp" role="button">Calcular &raquo;</a></p>
+            <p class="mb-0"><a class="btn btn-lg btn-primary mb-5" href="amortizacao-americana.jsp" role="button">Calcular &raquo;</a></p>
           </div>
           
           <div class="col-md-4 text-center content">
@@ -63,7 +63,7 @@
             <p class="mb-0">Tabela Price, também chamado de sistema francês de amortização, é um método usado 
               em amortização de empréstimo cuja principal característica é apresentar prestações (ou parcelas) iguais.
             </p>
-            <p class="mb-0"><a class="btn btn-primary mb-5" href="tabela-price.jsp" role="button">Calcular &raquo;</a></p>
+            <p class="mb-0"><a class="btn btn-lg btn-primary mb-5" href="tabela-price.jsp" role="button">Calcular &raquo;</a></p>
           </div>
         </div>
       </div>
