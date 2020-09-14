@@ -36,7 +36,7 @@
   <body>
     <%@include file="WEB-INF/jspf/menu.jspf" %>
     <main role="main">
-      <div class="jumbotron mt-5">
+      <div class="jumbotron mt-4">
         <div class="container">
           <h1 class="display-4 font-weight-bold">Cálculo de amortização pelo sistema price.</h1>
           <p class="text-muted mt-3" style="font-size: 1.2rem; line-height: 35px;">Tabela Price, também chamado de sistema francês de amortização, é um método usado em amortização de empréstimo 

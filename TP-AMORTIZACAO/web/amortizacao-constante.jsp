@@ -15,7 +15,6 @@
     parcelas = 0;
     taxa = 0;
     saldodevedor = 0;
-
   }
 %>
 <html>
@@ -36,12 +35,10 @@
   <body>
     <%@include file="WEB-INF/jspf/menu.jspf" %>
     <main role="main">
-      <div class="jumbotron mt-5">
+      <div class="jumbotron mt-4">
         <div class="container">
-          <h1 class="display-4 font-weight-bold">Cálculo de amortização pelo sistema price.</h1>
-          <p class="text-muted mt-3" style="font-size: 1.2rem; line-height: 35px;">Tabela Price, também chamado de sistema francês de amortização, é um método usado em amortização de empréstimo 
-            cuja principal característica é apresentar prestações (ou parcelas) iguais. 
-            O método foi apresentado em 1771 por Richard Price em sua obra "Observações sobre Pagamentos Remissivos.</p>
+          <h1 class="display-4 font-weight-bold">Cálculo de amortização constante</h1>
+          <p class="text-muted mt-3" style="font-size: 1.2rem; line-height: 35px;">O Sistema de Amortização Constante é o modelo de amortização em que ocorre o abatimento programado de valores de um empréstimo por um período determinado, onde o valor das parcelas a serem pagas é decrescente, sendo automaticamente descontado do valor inicial da dívida.</p>
           <form class="mt-5">
             <div class="input-group-lg mb-3">
               <label for="emprestimo">Valor do emprestimo</label>
@@ -76,9 +73,6 @@
           float totalJuros = 0;
           float totalAmortizacao = 0;
           float totalParcelas = 0;
-
-         
-
         %>
         <table class="table border">
           <thead class="thead-dark">
