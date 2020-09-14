@@ -38,7 +38,7 @@
     <main role="main">
       <div class="jumbotron mt-4">
         <div class="container">
-          <h1 class="display-4 font-weight-bold">Cálculo de amortização pelo sistema de amortização francês (SAF.</h1>
+          <h1 class="display-4 font-weight-bold">Cálculo de amortização pelo sistema de amortização francês (SAF).</h1>
           <p class="text-muted mt-3" style="font-size: 1.2rem; line-height: 35px;">Tabela Price, também chamado de sistema francês de amortização, é um método usado em amortização de empréstimo 
             cuja principal característica é apresentar prestações (ou parcelas) iguais. 
             O método foi apresentado em 1771 por Richard Price em sua obra "Observações sobre Pagamentos Remissivos.</p>
