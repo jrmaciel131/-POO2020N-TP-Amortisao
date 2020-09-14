@@ -22,7 +22,7 @@
   <head>
     <%@include file="WEB-INF/jspf/css.jspf" %>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Amortizacão Americana</title>
+    <title>Amortizacão - SAA</title>
     <style>
       input {
         max-width: 50%;
@@ -38,23 +38,23 @@
     <main role="main">
       <div class="jumbotron mt-5">
         <div class="container">
-          <h1 class="display-4 font-weight-bold">Cálculo de amortização americana</h1>
+          <h1 class="display-4 font-weight-bold">Cálculo de amortização pelo sistema de amortização americano (SAA).</h1>
           <p class="text-muted mt-3" style="font-size: 1.2rem; line-height: 35px;">É um sistema de amortização de 
             dívidas onde os juros de um empréstimo são pagos periodicamente, porém a quitação do empréstimo se dá por 
-            meio de uma única parcela que deverá ser paga ao final do contrato</p>
+            meio de uma única parcela que deverá ser paga ao final do contrato.</p>
           <form class="mt-5">
             <div class="input-group-lg mb-3">
-              <label for="emprestimo">Valor do emprestimo</label>
+              <label for="emprestimo">Valor do empréstimo: </label>
               <input type="number" name="valorEmprestimo" class="form-control" id="emprestimo">
             </div>
 
             <div class="input-group-lg mb-3">
-              <label  for="juros">Taxa de juros ao ano</label>
+              <label  for="juros">Taxa de juros anual: </label>
               <input type="text" name="taxa" class="form-control" id="juros">
             </div>
 
             <div class="input-group-lg mb-3">
-              <label for="parcelas">Numero de parcelas</label>
+              <label for="parcelas">Número de parcelas: </label>
               <input type="number" name="nparcelas" class="form-control" id="parcelas">
             </div>
 
@@ -90,7 +90,7 @@
               float saldoDevedor, prestacao;
 
               for (int i = 1; i <= parcelas; i++) {
-                float jurosPrestacao = emprestimo * (juros / 100);
+                float jurosPrestacao = emprestimo * (juros / 12)/100;
                 totalJuros += jurosPrestacao;
                 mes = i;
                 saldoDevedor = emprestimo;

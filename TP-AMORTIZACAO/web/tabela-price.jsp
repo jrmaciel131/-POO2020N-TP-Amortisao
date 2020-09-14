@@ -22,7 +22,7 @@
   <head>
     <%@include file="WEB-INF/jspf/css.jspf" %>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Amortizacão - Sistema Price</title>
+    <title>Amortizacão - SAF</title>
     <style>
       input {
         max-width: 50%;
@@ -38,23 +38,23 @@
     <main role="main">
       <div class="jumbotron mt-4">
         <div class="container">
-          <h1 class="display-4 font-weight-bold">Cálculo de amortização pelo sistema price.</h1>
+          <h1 class="display-4 font-weight-bold">Cálculo de amortização pelo sistema de amortização francês (SAF.</h1>
           <p class="text-muted mt-3" style="font-size: 1.2rem; line-height: 35px;">Tabela Price, também chamado de sistema francês de amortização, é um método usado em amortização de empréstimo 
             cuja principal característica é apresentar prestações (ou parcelas) iguais. 
             O método foi apresentado em 1771 por Richard Price em sua obra "Observações sobre Pagamentos Remissivos.</p>
           <form class="mt-5">
             <div class="input-group-lg mb-3">
-              <label for="emprestimo">Valor do emprestimo</label>
+              <label for="emprestimo">Valor do empréstimo:</label>
               <input type="number" name="valorEmprestimo" class="form-control" id="emprestimo">
             </div>
 
             <div class="input-group-lg mb-3">
-              <label  for="juros">Taxa de juros ao ano</label>
+              <label  for="juros">Taxa de juros anual:</label>
               <input type="text" name="taxa" class="form-control" id="juros">
             </div>
 
             <div class="input-group-lg mb-3">
-              <label for="parcelas">Numero de parcelas</label>
+              <label for="parcelas">Número de parcelas:</label>
               <input type="number" name="nparcelas" class="form-control" id="parcelas">
             </div>
 

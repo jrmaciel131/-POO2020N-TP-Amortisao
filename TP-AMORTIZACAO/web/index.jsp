@@ -42,7 +42,7 @@
       <div class="container mt-5">
         <div class="row">
           <div class="col-md-4 text-center content">
-            <h3 class="mb-0">Amortização Constante</h3>
+            <h3 class="mb-0">Amortização Constante.</h3>
             <p class="mb-0">O sistema de amortização constante (SAC) é uma forma de amortização 
               de um empréstimo por prestações que incluem os juros, amortizando assim 
               partes iguais do valor total do empréstimo.
@@ -51,7 +51,7 @@
           </div>
           
           <div class="col-md-4 text-center content">
-            <h3 class="mb-0">Amortização Americana</h3>
+            <h3 class="mb-0">Amortização Americana.</h3>
             <p class="mb-0">É um sistema de amortização de dívidas onde os juros de um empréstimo são pagos periodicamente, 
               porém a quitação do empréstimo se dá por meio de uma única parcela que deverá ser paga ao final do contrato.
             </p>
@@ -59,7 +59,7 @@
           </div>
           
           <div class="col-md-4 text-center content">
-            <h3 class="mb-0">Tabela Price</h3>
+            <h3 class="mb-0">Amortização Francesa.</h3>
             <p class="mb-0">Tabela Price, também chamado de sistema francês de amortização, é um método usado 
               em amortização de empréstimo cuja principal característica é apresentar prestações (ou parcelas) iguais.
             </p>

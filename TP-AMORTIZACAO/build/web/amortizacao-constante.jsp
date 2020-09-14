@@ -21,7 +21,7 @@
   <head>
     <%@include file="WEB-INF/jspf/css.jspf" %>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Amortizacão - Sistema Price</title>
+    <title>Amortizacão - SAC</title>
     <style>
       input {
         max-width: 50%;
@@ -37,21 +37,21 @@
     <main role="main">
       <div class="jumbotron mt-4">
         <div class="container">
-          <h1 class="display-4 font-weight-bold">Cálculo de amortização constante</h1>
+          <h1 class="display-4 font-weight-bold">Cálculo de amortização pelo sistema de amortização constante (SAC).</h1>
           <p class="text-muted mt-3" style="font-size: 1.2rem; line-height: 35px;">O Sistema de Amortização Constante é o modelo de amortização em que ocorre o abatimento programado de valores de um empréstimo por um período determinado, onde o valor das parcelas a serem pagas é decrescente, sendo automaticamente descontado do valor inicial da dívida.</p>
           <form class="mt-5">
             <div class="input-group-lg mb-3">
-              <label for="emprestimo">Valor do emprestimo</label>
+              <label for="emprestimo">Valor do empréstimo: </label>
               <input type="number" name="valorEmprestimo" class="form-control" id="emprestimo">
             </div>
 
             <div class="input-group-lg mb-3">
-              <label  for="juros">Taxa de juros ao ano</label>
+              <label  for="juros">Taxa de juros anual: </label>
               <input type="text" name="taxa" class="form-control" id="juros">
             </div>
 
             <div class="input-group-lg mb-3">
-              <label for="parcelas">Numero de parcelas</label>
+              <label for="parcelas">Número de parcelas: </label>
               <input type="number" name="nparcelas" class="form-control" id="parcelas">
             </div>
 
